@@ -3,6 +3,8 @@ package com.balancaunama.project.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +30,24 @@ public class UsuarioServices {
 	
 	public Usuario insert(Usuario usuario) {
 		return usuarioRepository.save(usuario);
+	}
+	
+	public Usuario update(Long id, Usuario usuario) {
+		try {
+			Usuario entity = usuarioRepository.getById(id);
+			updateData(entity, usuario);
+			return usuarioRepository.save(entity);
+		}catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
+	}
+	
+	private void updateData(Usuario entity, Usuario usuario) {
+		entity.setNome(usuario.getNome());
+		entity.setLogin(usuario.getLogin());
+		entity.setEmail(usuario.getEmail());
+		entity.setPassword(usuario.getPassword());
+		entity.setSetor(usuario.getSetor());
+		entity.setVeiculo(usuario.getVeiculo());
 	}
 }

@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_user")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,18 +26,18 @@ public class Usuario implements Serializable{
 	private String email;
 	private String password;
 	private Boolean ativo;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_setor")
 	private Setor setor;
-	
+
 	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "veiculo_id")
 	@JsonIgnore
 	private Veiculo veiculo;
-	
+
 	public Usuario() {
-		
+
 	}
 
 	public Usuario(Long id, String nome, String login, String email, String password, Boolean ativo, Setor setor) {

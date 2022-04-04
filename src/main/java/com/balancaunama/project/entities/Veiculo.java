@@ -13,22 +13,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_veiculo")
-public class Veiculo implements Serializable{
+public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String placa;
 	private String marca;
 	private String cor;
-	
+
 	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
-	
+
 	public Veiculo() {
-		
+
 	}
 
 	public Veiculo(Long id, String placa, String marca, String cor, Usuario usuario) {
