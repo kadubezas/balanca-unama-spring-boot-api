@@ -1,15 +1,17 @@
 package com.balancaunama.project.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_veiculo")
@@ -22,22 +24,21 @@ public class Veiculo implements Serializable {
 	private String placa;
 	private String marca;
 	private String cor;
-
-	@OneToOne(cascade = CascadeType.DETACH)
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "veiculo")
+	private List<Usuario> usuarios = new ArrayList<>();
 
 	public Veiculo() {
 
 	}
 
-	public Veiculo(Long id, String placa, String marca, String cor, Usuario usuario) {
+	public Veiculo(Long id, String placa, String marca, String cor) {
 		super();
 		this.id = id;
 		this.placa = placa;
 		this.marca = marca;
 		this.cor = cor;
-		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -70,13 +71,5 @@ public class Veiculo implements Serializable {
 
 	public void setCor(String cor) {
 		this.cor = cor;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 }

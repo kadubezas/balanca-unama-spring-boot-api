@@ -1,17 +1,13 @@
 package com.balancaunama.project.entities;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_user")
@@ -31,16 +27,15 @@ public class Usuario implements Serializable {
 	@JoinColumn(name = "id_setor")
 	private Setor setor;
 
-	@OneToOne(cascade = CascadeType.DETACH)
+	@ManyToOne
 	@JoinColumn(name = "veiculo_id")
-	@JsonIgnore
 	private Veiculo veiculo;
 
 	public Usuario() {
 
 	}
 
-	public Usuario(Long id, String nome, String login, String email, String password, Boolean ativo, Setor setor) {
+	public Usuario(Long id, String nome, String login, String email, String password, Boolean ativo, Setor setor, Veiculo veiculo) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -49,6 +44,7 @@ public class Usuario implements Serializable {
 		this.password = password;
 		this.ativo = ativo;
 		this.setor = setor;
+		this.veiculo = veiculo;
 	}
 
 	public Long getId() {
