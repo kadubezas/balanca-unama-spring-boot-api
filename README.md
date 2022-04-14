@@ -359,3 +359,76 @@ Objetos Retornado
         "cor": "Vermelho"
     }
 ~~~
+
+### Peso
+
+#### 1. Objeto Padrão
+
+~~~json
+    {
+        "id": Long,
+        "dataPesagem": Instant (yyyy-MM-dd'T'HH:mm:ss.SSSXXX),
+        "peso": Float
+    }
+~~~
+
+#### 2. Insert
+
+Chave | Valor
+------- | ------
+URL | /peso
+METHOD | POST
+
+Headers
+
+key | value
+------- | ------
+Content-Type | application/json
+
+Body de Envio
+
+~~~json
+    {
+        "dataPesagem": "2022-04-14T17:52:04.000+00:00",
+        "peso": 14000.0
+    }
+~~~
+
+#### 3. Find All
+
+Chave | Valor
+------- | ------
+URL | /peso
+METHOD | GET
+
+Objetos Retornados
+
+~~~json
+    {
+        "id": 1,
+        "dataPesagem": "2022-04-14T17:52:04.000+00:00",
+        "peso": 14000.0
+    },
+    {
+        "id": 2,
+        "dataPesagem": "2022-04-14T17:52:04.000+00:00",
+        "peso": 9000.0
+    }
+~~~
+
+#### 4. Find Last
+
+Chave | Valor
+------- | ------
+URL | /peso/last
+METHOD | GET
+
+Retorna o último Objeto inserido no banco
+
+~~~json
+    {
+        "id": 2,
+        "dataPesagem": "2022-04-14T17:52:04.000+00:00",
+        "peso": 9000.0
+    }
+~~~
