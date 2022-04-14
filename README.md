@@ -164,3 +164,92 @@ Objeto Retornado
     }
 ]
 ~~~
+
+### Setor
+
+#### 1. Objeto padrão.
+
+~~~json
+    {
+        "id": 1,
+        "descricao": "Administração"
+    }
+~~~
+
+#### 2. Insert
+
+Chave | Valor
+------- | ------
+URL | /setores
+METHOD | POST
+
+Headers
+
+key | value
+------- | ------
+Content-Type | application/json
+
+Body de Envio
+
+~~~json
+    {
+        "descricao": "Financeiro"
+    }
+~~~
+
+#### 3. Update
+
+Chave | Valor
+------- | ------
+URL | /setores/{id}
+METHOD | PUT
+
+Headers
+
+key | value
+------- | ------
+Content-Type | application/json
+
+Body de Envio
+
+~~~json
+    {
+        "descricao": "Contabilidade"
+    }
+~~~
+
+#### 4. Find By Id
+
+Chave | Valor
+------- | ------
+URL | /setores/{id}
+METHOD | GET
+
+Objeto Retornado
+
+~~~json
+    {
+        "id": "1"
+        "descricao": "Administração"
+    }
+~~~
+
+#### 5. Find All
+
+Chave | Valor
+------- | ------
+URL | /setores
+METHOD | GET
+
+Objeto Retornado
+
+~~~json
+    {
+        "id": 1,
+        "descricao": "Administração"
+    },
+    {
+        "id": 2,
+        "descricao": "Balança"
+    }
+~~~
