@@ -22,6 +22,7 @@ public class Veiculo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String placa;
+	private Float tara;
 	private String marca;
 	private String cor;
 	
@@ -33,10 +34,11 @@ public class Veiculo implements Serializable {
 
 	}
 
-	public Veiculo(Long id, String placa, String marca, String cor) {
+	public Veiculo(Long id, String placa, Float tara, String marca, String cor) {
 		super();
 		this.id = id;
 		this.placa = placa;
+		this.tara = tara;
 		this.marca = marca;
 		this.cor = cor;
 	}
@@ -55,6 +57,14 @@ public class Veiculo implements Serializable {
 
 	public void setPlaca(String placa) {
 		this.placa = placa;
+	}
+
+	public Float getTara() {
+		return tara;
+	}
+
+	public void setTara(Float tara) {
+		this.tara = tara;
 	}
 
 	public String getMarca() {
