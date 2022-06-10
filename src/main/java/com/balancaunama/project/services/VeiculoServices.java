@@ -42,6 +42,17 @@ public class VeiculoServices {
 		}
 	}
 	
+	public Veiculo updateTara(Long id, float tara) {
+		try {
+			Veiculo veiculo = repository.getById(id);
+			veiculo.setTara(tara);
+			
+			return repository.save(veiculo);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
+	}
+	
 	private void updateData(Veiculo entity, Veiculo veiculo) {
 		entity.setMarca(veiculo.getMarca());
 		entity.setPlaca(veiculo.getPlaca());
