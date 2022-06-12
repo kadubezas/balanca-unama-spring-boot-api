@@ -28,7 +28,7 @@ public class Usuario implements Serializable {
 	private Setor setor;
 
 	@ManyToOne
-	@JoinColumn(name = "veiculo_id")
+	@JoinColumn(name = "id_veiculo")
 	private Veiculo veiculo;
 
 	public Usuario() {
