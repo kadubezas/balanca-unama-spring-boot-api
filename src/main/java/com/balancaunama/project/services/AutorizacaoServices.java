@@ -5,11 +5,13 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.balancaunama.project.entities.Autorizacao;
 import com.balancaunama.project.repositories.AutorizacaoRepository;
 import com.balancaunama.project.services.exceptions.ResourceNotFoundException;
 
+@Service
 public class AutorizacaoServices {
 
 	@Autowired

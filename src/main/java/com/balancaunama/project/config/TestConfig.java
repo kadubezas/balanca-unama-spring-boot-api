@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.balancaunama.project.entities.Agendamento;
 import com.balancaunama.project.entities.Autorizacao;
+import com.balancaunama.project.entities.Pesagem;
 import com.balancaunama.project.entities.PesoBalanca;
 import com.balancaunama.project.entities.Porto;
 import com.balancaunama.project.entities.Produto;
@@ -108,5 +109,14 @@ public class TestConfig implements CommandLineRunner {
 		Autorizacao autorizacao4 = new Autorizacao(null, null, agendamento);
 
 		autorizacaoRepository.saveAll(Arrays.asList(autorizacao, autorizacao2, autorizacao3, autorizacao4));
+
+		Pesagem pesagem = new Pesagem(null, 13000F, 9000F, Timestamp.valueOf(sdf.format(new Date())), Timestamp.valueOf(sdf.format(new Date())), autorizacao,
+				veiculo1);
+		
+		pesagemRepository.save(pesagem);
+		
+		autorizacao.setUsingDate(Timestamp.valueOf(sdf.format(new Date())));
+		
+		autorizacaoRepository.save(autorizacao);
 	}
 }
