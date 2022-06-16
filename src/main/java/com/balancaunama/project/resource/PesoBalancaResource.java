@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,7 @@ public class PesoBalancaResource {
 	@Autowired
 	PesoBalancaServices services;
 	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<PesoBalanca>> findAll(){
 		List<PesoBalanca> list = services.findAll();
@@ -29,6 +31,7 @@ public class PesoBalancaResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@CrossOrigin
 	@GetMapping(value = "/last")
 	public ResponseEntity<PesoBalanca> findLast(){
 		PesoBalanca obj = services.findLast();
