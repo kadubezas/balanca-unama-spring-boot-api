@@ -49,7 +49,8 @@ public class VeiculoResource {
 		return ResponseEntity.ok().body(veiculo);
 	}
 	
-	@PutMapping(value = "/atualizarTara/{id}")
+	@CrossOrigin
+	@GetMapping(value = "/atualizarTara/{id}")
 	public ResponseEntity<Veiculo> updateTara(@PathVariable Long id, @RequestParam float tara){
 		Veiculo veiculo = services.updateTara(id, tara);
 		
