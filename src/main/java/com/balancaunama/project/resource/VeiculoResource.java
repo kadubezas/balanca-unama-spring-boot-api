@@ -33,6 +33,14 @@ public class VeiculoResource {
 
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@CrossOrigin
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Veiculo> findById(@PathVariable Long id){
+		Veiculo obj = services.findById(id);
+		
+		return ResponseEntity.ok().body(obj);
+	}
 
 	@PostMapping
 	public ResponseEntity<Veiculo> insert(@RequestBody Veiculo veiculo) {
